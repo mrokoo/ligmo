@@ -1,0 +1,627 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-container: #f3f6fd;
+  --main-color: #1f1c2e;
+  --secondary-color: #4a4a4a;
+  --link-color: #1f1c2e;
+  --link-color-hover: #c3cff4;
+  --link-color-active: #fff;
+  --link-color-active-bg: #1f1c2e;
+  --projects-section: #fff;
+  --button-bg: #1f1c24;
+  --search-area-bg: #fff;
+
+  --message-box-hover: #fafcff;
+  --message-box-border: #e9ebf0;
+  --star: #1f1c2e;
+  --more-list-bg: #fff;
+  --more-list-bg-hover: #f6fbff;
+  --more-list-shadow: rgba(209, 209, 209, 0.4);
+  --message-btn: #fff;
+  --button-bgt: #fff;
+}
+
+.dark:root {
+  --app-container: #1f1d2b;
+  --main-color: #fff;
+  --secondary-color: rgba(255, 255, 255, 0.8);
+  --projects-section: #252836;
+  --link-color: rgba(255, 255, 255, 0.8);
+  --link-color-hover: rgba(195, 207, 244, 0.1);
+  --link-color-active-bg: rgba(195, 207, 244, 0.2);
+  --button-bg: #2f3142;
+  --search-area-bg: #2f3142;
+  --light-font: rgba(255, 255, 255, 0.8);
+
+  --message-box-hover: #303446;
+  --message-box-border: rgba(255, 255, 255, 0.1);
+  --star: #ffd92c;
+  --more-list-bg: #2f3142;
+  --more-list-bg-hover: rgba(195, 207, 244, 0.1);
+  --more-list-shadow: rgba(195, 207, 244, 0.1);
+  --message-btn: rgba(195, 207, 244, 0.1);
+  --button-bgt: #1f1c2e;
+}
+
+/* 4个断点 */
+@media screen and (max-width: 980px) {
+  .project-boxes.jsGridView .project-box-wrapper {
+    width: 50%;
+  }
+
+  .status-number,
+  .status-type {
+    font-size: 14px;
+  }
+  .status-type:after {
+    width: 4px;
+    height: 4px;
+  }
+  .item-status {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .messages-section {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+  }
+  .messages-section .messages-close {
+    display: block;
+  }
+  .messages-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .app-name,
+  .profile-btn span {
+    display: none;
+  }
+  .add-btn,
+  .notification-btn,
+  .mode-switch {
+    width: 20px;
+    height: 20px;
+  }
+  .add-btn svg,
+  .notification-btn svg,
+  .mode-switch svg {
+    width: 16px;
+    height: 16px;
+  }
+  .app-header-right button {
+    margin-left: 4px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .projects-section {
+    overflow: auto;
+  }
+  .project-boxes {
+    overflow-y: visible;
+  }
+  .app-sidebar,
+  .app-icon {
+    display: none;
+  }
+  .app-content {
+    padding: 16px 12px 24px 12px;
+  }
+  .status-number,
+  .status-type {
+    font-size: 10px;
+  }
+  .view-btn {
+    width: 24px;
+    height: 24px;
+  }
+  .app-header {
+    padding: 16px 10px;
+  }
+  .search-input {
+    max-width: 120px;
+  }
+  .project-boxes.jsGridView .project-box-wrapper {
+    width: 100%;
+  }
+  .projects-section {
+    padding: 24px 16px 0 16px;
+  }
+  .profile-btn img {
+    width: 24px;
+    height: 24px;
+  }
+  .app-header {
+    padding: 10px;
+  }
+  .projects-section-header p,
+  .projects-section-header .time {
+    font-size: 18px;
+  }
+  .status-type {
+    padding-right: 4px;
+  }
+  .status-type:after {
+    display: none;
+  }
+  .search-input {
+    font-size: 14px;
+  }
+  .messages-btn {
+    top: 48px;
+  }
+  .box-content-header {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .box-content-subheader {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .project-boxes.jsListView .project-box-header > span {
+    font-size: 10px;
+  }
+  .box-progress-header {
+    font-size: 12px;
+  }
+  .box-progress-percentage {
+    font-size: 10px;
+  }
+  .days-left {
+    font-size: 8px;
+    padding: 6px 6px;
+    text-align: center;
+  }
+  .project-boxes.jsListView .project-box > * {
+    margin-right: 10px;
+  }
+  .project-boxes.jsListView .more-wrapper {
+    right: 2px;
+    top: 10px;
+  }
+}
+
+@layer base {
+  html,
+  body {
+    @apply w-full h-screen overflow-hidden
+        /* 基础样式 */;
+  }
+
+  button,
+  a {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /* app-icon组件 */
+  .app-icon {
+    width: 26px;
+    height: 2px;
+    border-radius: 4px;
+  }
+
+  .app-icon::before,
+  .app-icon::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--main-color);
+    left: 50%;
+    transform: translatex(-50%);
+  }
+
+  .app-icon::before {
+    top: -6px;
+  }
+  .app-icon::after {
+    bottom: -6px;
+  }
+
+  /* app-sidebar-link 组件 */
+
+  .app-sidebar-link {
+    @apply mx-0 my-4 transition-all rounded-full  flex-shrink-0 w-10 h-10 flex justify-center items-center text-link-color;
+  }
+
+  .app-sidebar-link:hover {
+    background-color: var(--link-color-hover);
+    color: var(--link-color-active);
+  }
+
+  .app-sidebar-link.active {
+    background-color: var(--link-color-active-bg);
+    color: var(--link-color-active);
+  }
+
+  /* projects-status > item-status状态组件 */
+
+  .item-status {
+    @apply flex flex-col mr-4;
+  }
+
+  .item-status:not(:last-child) .status-type::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translatey(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid var(--secondary-color);
+  }
+
+  .status-number {
+    @apply text-2xl font-bold text-main-color;
+  }
+
+  .status-type {
+    @apply relative pr-6 text-secondary-color;
+  }
+
+  /* view-action > view-bth组件 */
+  .view-btn {
+    @apply w-9 h-9 flex justify-center items-center p-6px rounded bg-transparent border-none text-main-color ml-2 transition-all;
+  }
+
+  .view-btn:not(.active):hover {
+    @apply bg-link-color-hover text-link-color-active;
+  }
+
+  .view-btn.active {
+    @apply bg-link-color-active-bg text-link-color-active;
+  }
+
+  /* project-boxes > project-box-wrapper and project-box组件 */
+  .jsGridView {
+    @apply flex flex-wrap;
+  }
+
+  .jsGridView .project-box-wrapper {
+    @apply w-1/3;
+  }
+
+  .project-box-wrapper {
+    @apply p-2 transition-all;
+  }
+
+  .project-box {
+    --main-color-card: #dbf6fd;
+    border-radius: 30px;
+    background-color: var(--main-color-card);
+    @apply p-4;
+  }
+
+  .project-box-header {
+    @apply flex items-center justify-between mb-4 text-main-color;
+  }
+
+  .project-box-header span {
+    color: #4a4a4a;
+    font-size: 14px;
+    line-height: 16px;
+    @apply opacity-70;
+  }
+
+  .more-wrapper {
+    @apply relative;
+  }
+
+  .project-btn-more {
+    @apply p-0 w-6 h-6 relative bg-transparent border-none flex-shrink-0;
+  }
+
+  .project-box-content-header {
+    @apply text-center mb-4;
+  }
+
+  .project-box-content-header p {
+    @apply m-0;
+  }
+
+  .box-content-header {
+    @apply text-base font-bold opacity-70;
+  }
+
+  .box-content-subheader {
+    font-size: 14px;
+    line-height: 24px;
+    @apply opacity-70;
+  }
+
+  .box-progress-header {
+    font-size: 14px;
+    line-height: 16px;
+    @apply font-bold m-0;
+  }
+
+  .box-progress-bar {
+    border-radius: 6px;
+    @apply w-full h-1 overflow-hidden bg-white my-2;
+  }
+
+  .box-progress {
+    border-radius: 6px;
+    @apply block h-1;
+  }
+
+  .box-progress-percentage {
+    font-size: 14px;
+    line-height: 16px;
+    @apply text-right m-0 font-bold;
+  }
+
+  .project-box-footer {
+    @apply flex justify-between pt-4 relative;
+  }
+
+  .project-box-footer:after {
+    content: "";
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: calc(100% + 32px);
+    top: 0;
+    left: -16px;
+    height: 1px;
+  }
+
+  /* listview视图样式 */
+  .project-boxes.jsListView .project-box {
+    border-radius: 10px;
+    @apply flex relative;
+  }
+
+  .project-boxes.jsListView .project-box > * {
+    @apply mr-6;
+  }
+
+  .project-boxes.jsListView .more-wrapper {
+    @apply absolute right-4 top-4;
+  }
+
+  .project-boxes.jsListView .project-box-content-header {
+    order: 1;
+    max-width: 120px;
+  }
+
+  .project-boxes.jsListView .project-box-header {
+    order: 2;
+  }
+
+  .project-boxes.jsListView .project-box-footer {
+    order: 3;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .project-boxes.jsListView .project-box-footer:after {
+    display: none;
+  }
+
+  .project-boxes.jsListView .participants {
+    margin-bottom: 8px;
+  }
+
+  .project-boxes.jsListView .project-box-content-header p {
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .project-boxes.jsListView .project-box-header > span {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-size: 12px;
+  }
+
+  .project-boxes.jsListView .box-progress-wrapper {
+    order: 3;
+    flex: 1;
+  }
+
+  /* message-section */
+  .messages-section {
+    border-radius: 30px;
+    @apply flex-shrink-0 pb-8 bg-projects-section ml-6 flex-1 w-full relative overflow-auto transition-all;
+  }
+
+  .messages-close {
+    @apply absolute top-3 right-3 border-none bg-transparent text-main-color hidden z-30;
+  }
+
+  .messages-section.show {
+    @apply translate-x-0 opacity-100 ml-0;
+  }
+
+  .messages-section .projects-section-header {
+    @apply sticky top-0 pt-8 px-6 bg-projects-section;
+  }
+
+  .message-box {
+    border-top: 1px solid var(--message-box-border);
+    @apply p-4 flex items-start w-full;
+  }
+
+  .message-box:hover {
+    background-color: var(--message-box-hover);
+    border-top-color: var(--link-color-hover);
+  }
+
+  .message-box:hover + .message-box {
+    border-top-color: var(--link-color-hover);
+  }
+
+  .message-box img {
+    @apply rounded-full object-cover w-10 h-10;
+  }
+
+  .message-header {
+    @apply flex items-center justify-between w-full;
+  }
+
+  .message-header .name {
+    @apply text-base font-bold text-main-color m-0;
+  }
+
+  .message-content {
+    @apply pl-4 w-full;
+  }
+
+  .star-checkbox input {
+    @apply opacity-0 absolute w-0 h-0;
+  }
+
+  .star-checkbox label {
+    @apply w-6 h-6 flex justify-center items-center cursor-pointer;
+  }
+
+  .dark .star-checkbox {
+    color: var(--secondary-color);
+  }
+
+  .dark .star-checkbox input:checked + label {
+    color: var(--star);
+  }
+
+  .star-checkbox input:checked + label svg {
+    fill: var(--star);
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  .message-line {
+    @apply text-sm my-2 text-secondary-color opacity-70;
+  }
+
+  .message-line.time {
+    @apply text-right mb-0;
+  }
+
+  .participants {
+    @apply flex items-center;
+  }
+
+  .participants img {
+    @apply w-5 h-5 rounded-full overflow-hidden object-cover;
+  }
+
+  .participants img:not(:first-child) {
+    margin-left: -8px;
+  }
+
+  .add-participant {
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-left: 6px;
+    @apply w-5 h-5 p-0 rounded-full border-none flex items-center justify-center;
+  }
+
+  .days-left {
+    background-color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    padding: 6px 16px;
+    font-weight: 700;
+  }
+
+  .mode-switch.active .moon {
+    fill: var(--main-color);
+  }
+
+  .messages-btn {
+    border-radius: 4px 0 0 4px;
+    position: absolute;
+    right: 0;
+    top: 58px;
+    background-color: var(--message-btn);
+    border: none;
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    display: none;
+  }
+
+  /* modal组件 */
+  .modal-box {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .modal {
+    width: 35%;
+    height: 50%;
+  }
+
+  /* editor组件  */
+
+  .ProseMirror {
+    height: 100%;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #adb5bd;
+    pointer-events: none;
+    height: 0;
+  }
+}
+
+@layer utilities {
+  .box-shadow-search {
+    box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2),
+      0 24px 20px -24px rgba(71, 82, 107, 0.1);
+  }
+  .flex-2 {
+    flex: 2;
+  }
+
+  .text-name {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .ml-10px {
+    margin-left: 10px;
+  }
+
+  .pr-12px {
+    padding-right: 12px;
+  }
+
+  .rounded-32px {
+    border-radius: 32px;
+  }
+
+  .p-6px {
+    padding: 6px;
+  }
+
+  /* 用来修饰project-header-time */
+  .time {
+    font-size: 20px;
+  }
+}
