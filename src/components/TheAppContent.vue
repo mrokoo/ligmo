@@ -3,6 +3,7 @@
     <TheAppContentSidebar />
     <div
       class="projects-section flex-2 bg-projects-section rounded-32px pt-8 px-8 overflow-hidden h-full flex flex-col"
+      @scroll="fixin"
     >
       <div
         class="projects-section-header flex justify-between items-center mb-6 text-main-color"
@@ -518,6 +519,25 @@ const listView = (e) => {
   projectsList.classList.add("jsListView");
 };
 
+const fixin = (e) => {
+  const tabbar = document.querySelector(".tabbar")
+  tabbar.classList.remove("fixout")
+  tabbar.classList.add("fixin");
+  let t1 = 0;
+  let t2 = 0;
+  let timer = null; // 定时器
+  clearTimeout(timer);
+  timer = setTimeout(isScrollEnd, 150);
+  t1 = e.target.scrollTop;
+
+  function isScrollEnd() {
+    t2 = e.target.scrollTop;
+    if (t2 == t1) {
+      tabbar.classList.replace('fixin', 'fixout')
+    }
+  }
+};
+
 const gridView = (e) => {
   var listView = document.querySelector(".list-view");
   var gridView = document.querySelector(".grid-view");
@@ -527,8 +547,6 @@ const gridView = (e) => {
   projectsList.classList.remove("jsListView");
   projectsList.classList.add("jsGridView");
 };
-
-
 </script>
 
 <style lang="postcss" scoped></style>

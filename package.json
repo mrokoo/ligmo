@@ -16,6 +16,7 @@
     "@tiptap/extension-task-list": "^2.0.0-beta.26",
     "@tiptap/starter-kit": "^2.0.0-beta.183",
     "@tiptap/vue-3": "^2.0.0-beta.90",
+    "lunr": "^2.3.9",
     "remixicon": "^2.5.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"

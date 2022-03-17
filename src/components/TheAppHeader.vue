@@ -4,9 +4,7 @@
     <div class="app-header-left flex items-center flex-grow">
       <!-- 同时设定left与right为flex布局并垂直剧中 left为grow-1自动填充空间-->
       <span class="app-icon bg-main-color relative"></span>
-      <p class="app-name text-main-color m-0 text-name mx-8 font-bold">
-        Ligmo
-      </p>
+      <p class="app-name text-main-color m-0 text-name mx-8 font-bold">Ligmo</p>
       <!-- 样式设定 -->
       <div
         class="search-wrapper rounded-full h-10 bg-search-area-bg pr-12px flex justify-between items-center w-full max-w-md box-shadow-search text-light-font dark:shadow-none overflow-hidden"
@@ -32,6 +30,9 @@
           <circle cx="11" cy="11" r="8"></circle>
           <path d="M21 21l-4.35-4.35"></path>
         </svg>
+        <!-- <div class="search-panel bg-fuchsia-300 ">
+          search-panel 搜索内容联想面板
+        </div> -->
       </div>
     </div>
 
@@ -131,17 +132,47 @@
 </template>
 
 <script setup>
+import Lunr from "lunr";
+
+let documents = [
+  {
+    name: "Lunr",
+    text: "Like Solr, but much smaller, and not as bright.",
+  },
+  {
+    name: "React",
+    text: "A JavaScript library for building user interfaces.",
+  },
+  {
+    name: "Lodash",
+    text: "A modern JavaScript utility library delivering modularity, performance & extras.",
+  },
+];
+
+let idx = Lunr(function() {
+  this.ref("name");
+  this.field("text");
+  documents.forEach(function (doc) {
+    this.add(doc);
+  }, this);
+});
+
+
+console.log(idx.search('bright'))
+
+
+
+
+// 事件组
+
 const modeSwitch = (e) => {
-    document.documentElement.classList.toggle("dark");
-    e.target.classList.toggle('active')
-    
-    
+  document.documentElement.classList.toggle("dark");
+  e.target.classList.toggle("active");
 };
 
 const showMessages = (e) => {
-  document.querySelector('.messages-section').classList.add('show');
-}
-
+  document.querySelector(".messages-section").classList.add("show");
+};
 
 const addCard = (e) => {
   e.preventDefault();

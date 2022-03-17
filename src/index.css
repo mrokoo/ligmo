@@ -14,6 +14,9 @@
   --button-bg: #1f1c24;
   --search-area-bg: #fff;
 
+  --tabbar-color-bg: #fff;
+  --tabbar-color: #1f1c2e;
+
   --message-box-hover: #fafcff;
   --message-box-border: #e9ebf0;
   --star: #1f1c2e;
@@ -35,6 +38,10 @@
   --button-bg: #2f3142;
   --search-area-bg: #2f3142;
   --light-font: rgba(255, 255, 255, 0.8);
+
+
+  --tabbar-color-bg: #2f3142;
+  --tabbar-color: rgba(255, 255, 255, 0.8);
 
   --message-box-hover: #303446;
   --message-box-border: rgba(255, 255, 255, 0.1);
@@ -195,6 +202,7 @@
     top: 10px;
   }
 }
+
 
 @layer base {
   html,
@@ -571,8 +579,8 @@
   }
 
   .modal {
-    width: 35%;
-    height: 50%;
+  
+    @apply text-xs w-10/12 md:w-2/6 h-2/3 md:h-1/2
   }
 
   /* editor组件  */
@@ -624,4 +632,14 @@
   .time {
     font-size: 20px;
   }
+
+  .fixin {
+    @apply transition-all translate-y-full opacity-0
+  }
+  
+  .fixout {
+    @apply transition-all -translate-y-2 opacity-100
+  }
+
 }
+

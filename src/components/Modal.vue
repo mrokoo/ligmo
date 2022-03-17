@@ -3,10 +3,10 @@
     class="modal-box w-full h-screen fixed top-0 left-0 flex items-center justify-center transition-all text-main-color"
   >
     <div
-      class="modal bg-projects-section rounded-2xl p-6 flex flex-col justify-between"
+      class="modal bg-projects-section rounded-2xl p-4 md:p-6 flex flex-col justify-between"
     >
-      <div class="modal-header flex justify-between mb-4">
-        <h1 class="modal-title font-bold text-2xl">Creation</h1>
+      <div class="modal-header flex justify-between mb-1 md:mb-4">
+        <h1 class="modal-title font-bold text-base md:text-2xl">Creation</h1>
         <a href="" class="bth-close" @click="closeModal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,20 +26,20 @@
           </svg>
         </a>
       </div>
-      <div class="modal-body editor bg-red-400 flex-1 flex">
+      <div class="modal-body editor flex-1 flex">
         <MenuBar class="editor__header" :editor="editor" />
         <EditorContent class="editor__content" :editor="editor" />
       </div>
-      <div class="modal-footer flex justify-around mt-4">
+      <div class="modal-footer flex justify-around mt-2 md:mt-4">
         <button
-          class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded-lg text-lg"
+          class="ml-2 md:ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-1 px-2 md:py-2 md:px-6 focus:outline-none hover:bg-gray-300 rounded-lg text-lg"
         >
           cancel
         </button>
         <button
-          class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-lg text-lg"
+          class="inline-flex text-white bg-indigo-500 border-0 py-1 px-2 md:py-2 md:px-6 focus:outline-none hover:bg-indigo-600 rounded-lg text-lg"
         >
-          create
+          save 
         </button>
       </div>
     </div>
@@ -119,9 +119,7 @@ export default {
   visibility: visible;
 }
 
-.modal {
-  height: 50%;
-}
+
 .editor {
   display: flex;
   flex-direction: column;

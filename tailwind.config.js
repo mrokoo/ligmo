@@ -21,7 +21,9 @@ module.exports = {
         'search-area-bg': 'var(--search-area-bg)',
         'light-font': 'var(--light-font)',
         'button-bg': 'var(--button-bg)', 
-        'button-bgt': 'var(--button-bgt)'
+        'button-bgt': 'var(--button-bgt)',
+        'tabbar-color': 'var(--tabbar-color)',
+        'tabbar-color-bg': 'var(--tabbar-color-bg)',
       },
     },
 

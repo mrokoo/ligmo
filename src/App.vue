@@ -8,15 +8,18 @@ import TheNavBar from './components/TheNavBar.vue';
 import Modal from './components/Modal.vue';
 
 
+
+
+
+
 </script>
 
 <template>
-  <div class="app-container w-full flex flex-col h-full bg-app-container transition-all">
+  <div class="app-container w-full flex flex-col h-full bg-app-container transition-all relative">
     <TheAppHeader />
     <TheAppContent />
-    <Tiptap />
     <Modal />
-    <!-- <TheNavBar /> -->
+    <TheNavBar class="tabbar absolute bottom-8 w-full md:invisible z-0" />
   </div>
   
 </template>
